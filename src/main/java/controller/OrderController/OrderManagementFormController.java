@@ -1,4 +1,4 @@
-package controller;
+package controller.OrderController;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -6,7 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 
-public class OrderDetailManagementFormController {
+public class OrderManagementFormController {
 
     @FXML
     private JFXButton btnAdd;
@@ -18,28 +18,22 @@ public class OrderDetailManagementFormController {
     private JFXButton btndelete;
 
     @FXML
-    private TableColumn<?, ?> colDiscount;
+    private TableColumn<?, ?> colCustomerId;
 
     @FXML
-    private TableColumn<?, ?> colItemCode;
+    private TableColumn<?, ?> colOrderDate;
 
     @FXML
     private TableColumn<?, ?> colOrderId;
 
     @FXML
-    private TableColumn<?, ?> colOrderQty;
+    private JFXTextField txtCustomerId;
 
     @FXML
-    private JFXTextField txtDiscount;
-
-    @FXML
-    private JFXTextField txtItemCode;
+    private JFXTextField txtOrderDate;
 
     @FXML
     private JFXTextField txtOrderId;
-
-    @FXML
-    private JFXTextField txtOrderQty;
 
     @FXML
     void btnAddOnAction(ActionEvent event) {

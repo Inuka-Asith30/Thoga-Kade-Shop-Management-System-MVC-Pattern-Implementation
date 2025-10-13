@@ -13,13 +13,13 @@
 
 <AnchorPane prefHeight="418.0" prefWidth="890.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.itemController.ItemManagementFormController">
    <children>
-      <TableView fx:id="tblItems" layoutX="397.0" layoutY="96.0" prefHeight="272.0" prefWidth="422.0">
+      <TableView fx:id="tblItems" layoutX="397.0" layoutY="96.0" prefHeight="272.0" prefWidth="453.0">
         <columns>
           <TableColumn fx:id="colItemCode" prefWidth="75.0" text="Item Code" />
-          <TableColumn fx:id="colDescription" prefWidth="75.0" text="Description" />
-            <TableColumn fx:id="colPackSize" prefWidth="75.0" text="Pack Size" />
-            <TableColumn fx:id="colUnitPrice" prefWidth="98.4000244140625" text="Unit Price" />
-            <TableColumn fx:id="colQtyOnHand" prefWidth="98.4000244140625" text="Qty On Hand" />
+          <TableColumn fx:id="colDescription" prefWidth="104.79998779296875" text="Description" />
+            <TableColumn fx:id="colPackSize" prefWidth="91.99993896484375" text="Pack Size" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="84.80010986328125" text="Unit Price" />
+            <TableColumn fx:id="colQtyOnHand" prefWidth="97.5999755859375" text="Qty On Hand" />
         </columns>
       </TableView>
       <Label alignment="CENTER" layoutX="215.0" layoutY="32.0" prefHeight="39.0" prefWidth="460.0" text="Item Management Form">

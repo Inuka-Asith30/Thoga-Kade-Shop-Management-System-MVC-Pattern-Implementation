@@ -12,19 +12,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="620.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.customerController.CustomerManagementFormController">
+<AnchorPane prefHeight="620.0" prefWidth="1348.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.customerController.CustomerManagementFormController">
    <children>
-      <TableView fx:id="tblCustomerDetails" layoutX="398.0" layoutY="107.0" prefHeight="399.0" prefWidth="822.0">
+      <TableView fx:id="tblCustomerDetails" layoutX="398.0" layoutY="107.0" prefHeight="399.0" prefWidth="898.0">
         <columns>
           <TableColumn fx:id="colCustomerID" prefWidth="75.0" text="Customer ID" />
           <TableColumn fx:id="colTitle" prefWidth="75.0" text="Title" />
             <TableColumn fx:id="colName" prefWidth="75.0" text="Name" />
             <TableColumn fx:id="colDOB" prefWidth="98.4000244140625" text="Date Of Birth" />
             <TableColumn fx:id="colSalary" prefWidth="98.4000244140625" text="Salary" />
-            <TableColumn fx:id="colAddress" prefWidth="98.4000244140625" text="Address" />
-            <TableColumn fx:id="colCity" prefWidth="98.4000244140625" text="City" />
-            <TableColumn fx:id="colProvince" prefWidth="98.4000244140625" text="Province" />
-            <TableColumn fx:id="colPostalcode" prefWidth="98.4000244140625" text="PostalCode" />
+            <TableColumn fx:id="colAddress" prefWidth="165.5999755859375" text="Address" />
+            <TableColumn fx:id="colCity" prefWidth="95.20001220703125" text="City" />
+            <TableColumn fx:id="colProvince" prefWidth="107.2000732421875" text="Province" />
+            <TableColumn fx:id="colPostalcode" prefWidth="106.4000244140625" text="PostalCode" />
         </columns>
       </TableView>
       <Label alignment="CENTER" layoutX="384.0" layoutY="33.0" prefHeight="26.0" prefWidth="512.0" text="Customer Management Form">
