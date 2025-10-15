@@ -4,9 +4,13 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 
-public class OrderDetailManagementFormController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class OrderDetailManagementFormController implements Initializable {
 
     @FXML
     private JFXButton btnAdd;
@@ -44,6 +48,7 @@ public class OrderDetailManagementFormController {
     @FXML
     void btnAddOnAction(ActionEvent event) {
 
+
     }
 
     @FXML
@@ -56,4 +61,10 @@ public class OrderDetailManagementFormController {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
+
+    }
 }

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="452.0" prefWidth="629.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardFormController">
+<AnchorPane prefHeight="452.0" prefWidth="724.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardFormController">
    <children>
       <Label alignment="CENTER" layoutX="133.0" layoutY="25.0" prefHeight="82.0" prefWidth="362.0" text="Thoga Kade System">
          <font>
@@ -34,10 +34,15 @@
             <Font name="Berlin Sans FB" size="21.0" />
          </font>
       </JFXButton>
-      <ImageView fitHeight="236.0" fitWidth="260.0" layoutX="335.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="98.0" fitWidth="110.0" layoutX="521.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/istockphoto-520221976-612x612%20-%20Copy.jpg" />
          </image>
       </ImageView>
+      <JFXButton fx:id="btnOrderMangeForm1" layoutX="365.0" layoutY="226.0" onAction="#btnOrderMangeFormOnAction" prefHeight="40.0" prefWidth="260.0" style="-fx-background-color: #9ef01a;" text="Order Management" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="21.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>
