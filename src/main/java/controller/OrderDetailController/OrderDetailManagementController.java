@@ -35,12 +35,21 @@ public class OrderDetailManagementController implements OrderDetailManagementSer
 
 
 
+
         return false;
     }
 
     @Override
-    public int deleteOrderDetail(String OrderId) {
-        return 0;
+    public int deleteOrderDetail(String orderId) {
+        try {
+            Connection connection=DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement=connection.prepareStatement("delete from orderdetail where OrderId=?");
+            preparedStatement.setObject(1,orderId);
+            return preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

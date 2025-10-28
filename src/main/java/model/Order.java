@@ -3,6 +3,8 @@ package model;
 import javafx.scene.control.DatePicker;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @ToString
 @AllArgsConstructor
 @Setter
@@ -11,6 +13,6 @@ import lombok.*;
 
 public class Order {
     private String orderId;
-    private DatePicker orderDate;
+    private LocalDate orderDate;
     private String custId;
 }
