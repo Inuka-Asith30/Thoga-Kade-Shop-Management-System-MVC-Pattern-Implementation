@@ -12,10 +12,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.OrderDetails;
 
+import javax.swing.*;
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class OrderDetailManagementFormController implements Initializable {
+public class OrderDetailManagementFormController extends Component implements Initializable {
 
     ObservableList<OrderDetails> orderDetailList= FXCollections.observableArrayList();
 
@@ -61,18 +63,36 @@ public class OrderDetailManagementFormController implements Initializable {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-
+        String itemCode=txtItemCode.getText();
+        String orderId=txtOrderId.getText();
+        Integer isDeleted=orderDetailManagementService.deleteOrderDetail(itemCode,orderId);
+        if(isDeleted==1){
+            JOptionPane.showConfirmDialog(this,"Deleted Successfully");
+            loadOrderDetails();
+        }
+        else{
+            JOptionPane.showConfirmDialog(this,"Deleted not Successfully");
+        }
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
-        Integer orderQty=Integer.getInteger(txtOrderQty.getText());
+        Integer orderQty=Integer.parseInt(txtOrderQty.getText());
+        System.out.println(orderQty);
         String orderId=txtOrderId.getText();
-        Integer discount=Integer.getInteger(txtDiscount.getText());
+        Integer discount=Integer.parseInt(txtDiscount.getText());
         String itemCode=txtItemCode.getText();
 
         OrderDetails orderDetails=new OrderDetails(orderId,itemCode,orderQty,discount);
-        orderDetailManagementService.updateOrderDetail(orderDetails);
+        boolean isUpdated=orderDetailManagementService.updateOrderDetail(orderDetails);
+
+        if(isUpdated){
+            JOptionPane.showConfirmDialog(this,"Updated Successfully");
+            loadOrderDetails();
+        }
+        else{
+            JOptionPane.showConfirmDialog(this,"Updated not Successfully");
+        }
     }
 
     @Override

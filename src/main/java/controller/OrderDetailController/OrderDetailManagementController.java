@@ -33,18 +33,40 @@ public class OrderDetailManagementController implements OrderDetailManagementSer
     @Override
     public boolean updateOrderDetail(OrderDetails orderDetails) {
 
+        String SQL="UPDATE orderdetail SET OrderQTY=?,Discount=? WHERE ItemCode=? and OrderID=?";
+
+        try {
+
+            Connection connection=DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement=connection.prepareStatement(SQL);
+
+            preparedStatement.setObject(1,orderDetails.getOrderQty());
+            preparedStatement.setObject(2,orderDetails.getDiscount());
+            preparedStatement.setObject(3,orderDetails.getItemCode());
+            preparedStatement.setObject(4,orderDetails.getOrderId());
+
+            int isUpdated=preparedStatement.executeUpdate();
+
+            if(isUpdated==1){
+                return true;
+            }
+            return false;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
 
 
-        return false;
     }
 
     @Override
-    public int deleteOrderDetail(String orderId) {
+    public int deleteOrderDetail(String itemCode,String orderId) {
         try {
             Connection connection=DBConnection.getInstance().getConnection();
-            PreparedStatement preparedStatement=connection.prepareStatement("delete from orderdetail where OrderId=?");
-            preparedStatement.setObject(1,orderId);
+            PreparedStatement preparedStatement=connection.prepareStatement("delete from orderdetail where ItemCode=? and OrderId=?");
+            preparedStatement.setObject(1,itemCode);
+            preparedStatement.setObject(2,orderId);
             return preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
