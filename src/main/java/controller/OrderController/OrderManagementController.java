@@ -34,7 +34,7 @@ public class OrderManagementController implements OrderManagementService {
 
         try {
             Connection connection= DBConnection.getInstance().getConnection();
-            PreparedStatement preparedStatement=connection.prepareStatement("select * from order");
+            PreparedStatement preparedStatement=connection.prepareStatement("select * from orders");
             ResultSet resultSet=preparedStatement.executeQuery();
 
             while(resultSet.next()){
@@ -42,7 +42,7 @@ public class OrderManagementController implements OrderManagementService {
                         new Order(
                                 resultSet.getString("OrderId"),
                                 resultSet.getDate("orderDate").toLocalDate(),
-                                resultSet.getString("CustomerId"))
+                                resultSet.getString("CustID"))
                 );
 
             }

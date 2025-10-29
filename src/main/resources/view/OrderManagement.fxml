@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="668.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderController.OrderManagementFormController">
+<AnchorPane prefHeight="414.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderController.OrderManagementFormController">
    <children>
       <Label alignment="CENTER" layoutX="145.0" layoutY="32.0" prefHeight="39.0" prefWidth="460.0" text="Order Management Form">
          <font>
@@ -40,27 +40,17 @@
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnAdd" layoutX="136.0" layoutY="279.0" onAction="#btnAddOnAction" prefHeight="39.0" prefWidth="105.0" style="-fx-background-color: #9ef01a;" text="Place Order" textFill="WHITE">
+      <JFXButton fx:id="btnPlaceOrder" layoutX="127.0" layoutY="279.0" onAction="#btnPlaceOrderFormPerviewOnAction" prefHeight="39.0" prefWidth="122.0" style="-fx-background-color: #9ef01a;" text="Place Order" textFill="WHITE">
          <font>
             <Font name="Berlin Sans FB" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btndelete" layoutX="123.0" layoutY="336.0" onAction="#btnDeleteOnAction" prefHeight="39.0" prefWidth="130.0" style="-fx-background-color: #9ef01a;" text="Manage Order" textFill="WHITE">
+      <JFXButton fx:id="btndelete" layoutX="123.0" layoutY="336.0" onAction="#btnDeleteOnAction" prefHeight="39.0" prefWidth="130.0" style="-fx-background-color: #9ef01a;" text="Delete Order" textFill="WHITE">
          <font>
             <Font name="Berlin Sans FB" size="16.0" />
          </font>
       </JFXButton>
-      <TableView fx:id="tblAddToCart" layoutX="364.0" layoutY="97.0" prefHeight="284.0" prefWidth="481.0">
-         <columns>
-            <TableColumn fx:id="colItemCode" prefWidth="75.0" text="ItemCode" />
-            <TableColumn fx:id="colDescription" prefWidth="80.66668701171875" text="Description" />
-            <TableColumn fx:id="colQuantity" prefWidth="80.66665649414062" text="Quantity" />
-            <TableColumn fx:id="colUnitPrice" prefWidth="82.66668701171875" text="Unit Price" />
-            <TableColumn fx:id="colDiscount" prefWidth="81.99993896484375" text="Discount" />
-            <TableColumn fx:id="colTotal" prefWidth="79.33331298828125" text="Total" />
-         </columns>
-      </TableView>
-      <TableView fx:id="tblOrder" layoutX="363.0" layoutY="397.0" prefHeight="218.0" prefWidth="408.0">
+      <TableView fx:id="tblOrder" layoutX="401.0" layoutY="117.0" prefHeight="218.0" prefWidth="408.0">
          <columns>
             <TableColumn fx:id="colOrderId" prefWidth="115.20001220703125" text="Order ID" />
             <TableColumn fx:id="colOrderDate" prefWidth="140.79995727539062" text="Order Date" />
