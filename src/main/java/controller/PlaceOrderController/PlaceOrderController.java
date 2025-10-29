@@ -35,6 +35,21 @@ public class PlaceOrderController implements PlaceOrderService{
 
     @Override
     public String nameInitialize(String customerId) {
-        return "";
+
+        try {
+            Connection connection=DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement=connection.prepareStatement("select CustName from customer where CustID=?");
+            preparedStatement.setObject(1,customerId);
+            ResultSet resultSet=preparedStatement.executeQuery();
+
+            String custName=null;
+            while(resultSet.next()){
+                custName= resultSet.getString("CustName");
+            }
+            return custName;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

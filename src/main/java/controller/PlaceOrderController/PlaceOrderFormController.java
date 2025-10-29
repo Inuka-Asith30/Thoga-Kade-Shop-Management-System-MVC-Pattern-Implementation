@@ -3,15 +3,24 @@ package controller.PlaceOrderController;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.Item;
+import model.TableOrderDetail;
 
-public class PlaceOrderFormController {
+import javax.swing.*;
+import java.awt.*;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class PlaceOrderFormController extends Component implements Initializable{
 
     @FXML
     private JFXButton btnAddtoCart;
@@ -20,22 +29,22 @@ public class PlaceOrderFormController {
     private JFXButton btnPlaceOrder;
 
     @FXML
-    private TableColumn<?, ?> colDescription1;
+    private TableColumn<?, ?> colDescription;
 
     @FXML
-    private TableColumn<?, ?> colDiscount1;
+    private TableColumn<?, ?> colDiscount;
 
     @FXML
-    private TableColumn<?, ?> colItemCode1;
+    private TableColumn<?, ?> colItemCode;
 
     @FXML
-    private TableColumn<?, ?> colQuantity1;
+    private TableColumn<?, ?> colQuantity;
 
     @FXML
-    private TableColumn<?, ?> colTotal1;
+    private TableColumn<?, ?> colTotal;
 
     @FXML
-    private TableColumn<?, ?> colUnitPrice1;
+    private TableColumn<?, ?> colUnitPrice;
 
     @FXML
     private Label lblCustomerName;
@@ -53,7 +62,7 @@ public class PlaceOrderFormController {
     private Label lblPrice;
 
     @FXML
-    private TableView<?> tblAddToCart;
+    private TableView<TableOrderDetail> tblAddToCart;
 
     @FXML
     private JFXTextField txtCustomerId;
@@ -66,10 +75,31 @@ public class PlaceOrderFormController {
 
     PlaceOrderService placeOrderService=new PlaceOrderController();
 
+    ObservableList<TableOrderDetail> tableOrderDetail= FXCollections.observableArrayList();
+
+    Double newTotal=0.0;
+
     @FXML
     void btnAddtoCartOnAction(ActionEvent event) {
+        String itemCode=txtItemCode.getText();
+        String description=lblDescripstion.getText();
+        Double unitPrice=Double.parseDouble(lblPrice.getText());
+        Integer orderQty=Integer.parseInt(txtQuantity.getText());
+        Integer discount=Integer.parseInt(lblDiscount.getText());
+
+
+        Integer qty=Integer.parseInt(txtQuantity.getText());
+        Double total=unitPrice*qty;
+
+        tableOrderDetail.add(new TableOrderDetail(itemCode,description,orderQty,unitPrice,discount,total));
+
+        newTotal=newTotal+total;
+        lblNetTotal.setText(String.valueOf(newTotal));
+        tblAddToCart.setItems(tableOrderDetail);
+
 
     }
+
 
     @FXML
     void btnPlaceOrderOnAction(ActionEvent event) {
@@ -79,7 +109,14 @@ public class PlaceOrderFormController {
     @FXML
     void txtCustomerIdOnAction(ActionEvent event) {
         String customerId=txtCustomerId.getText();
+        String custName=placeOrderService.nameInitialize(customerId);
 
+        if(custName==null){
+            JOptionPane.showConfirmDialog(this,"customer not Found");
+        }
+        else{
+            lblCustomerName.setText(custName);
+        }
     }
 
     @FXML
@@ -88,7 +125,7 @@ public class PlaceOrderFormController {
         Item item=placeOrderService.priceInitialize(itemCode);
 
         if(item==null){
-
+            JOptionPane.showConfirmDialog(this,"Item not Found");
         }
         else{
             lblDescripstion.setText(item.getDescription());
@@ -98,11 +135,18 @@ public class PlaceOrderFormController {
     }
     @FXML
     void txtQuantityOnAction(ActionEvent event) {
-        Double unitPrice=Double.parseDouble(lblPrice.getText());
-        Integer qty=Integer.parseInt(txtQuantity.getText());
 
 
-        lblNetTotal.setText(String.valueOf(unitPrice*qty));
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        colItemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colQuantity.setCellValueFactory(new PropertyValueFactory<>("orderQty"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        colDiscount.setCellValueFactory(new PropertyValueFactory<>("discount"));
+        colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
 
     }
 

@@ -13,12 +13,12 @@
    <children>
       <TableView fx:id="tblAddToCart" layoutX="349.0" layoutY="107.0" prefHeight="284.0" prefWidth="481.0">
          <columns>
-            <TableColumn fx:id="colItemCode110" prefWidth="75.0" text="ItemCode" />
-            <TableColumn fx:id="colDescription110" prefWidth="80.66668701171875" text="Description" />
-            <TableColumn fx:id="colQuantity110" prefWidth="80.66665649414062" text="Quantity" />
-            <TableColumn fx:id="colUnitPrice110" prefWidth="82.66668701171875" text="Unit Price" />
-            <TableColumn fx:id="colDiscount110" prefWidth="81.99993896484375" text="Discount" />
-            <TableColumn fx:id="colTotal110" prefWidth="79.33331298828125" text="Total" />
+            <TableColumn fx:id="colItemCode" prefWidth="75.0" text="ItemCode" />
+            <TableColumn fx:id="colDescription" prefWidth="80.66668701171875" text="Description" />
+            <TableColumn fx:id="colQuantity" prefWidth="80.66665649414062" text="Quantity" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="82.66668701171875" text="Unit Price" />
+            <TableColumn fx:id="colDiscount" prefWidth="81.99993896484375" text="Discount" />
+            <TableColumn fx:id="colTotal" prefWidth="79.33331298828125" text="Total" />
          </columns>
       </TableView>
       <Label alignment="CENTER" layoutX="226.0" layoutY="32.0" prefHeight="39.0" prefWidth="431.0" text="Place Order">
