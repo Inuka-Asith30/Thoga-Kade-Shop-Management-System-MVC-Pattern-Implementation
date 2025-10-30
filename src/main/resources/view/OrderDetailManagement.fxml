@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="418.0" prefWidth="808.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderDetailManagementFormController">
+<AnchorPane prefHeight="418.0" prefWidth="808.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderDetailController.OrderDetailManagementFormController">
    <children>
-      <TableView layoutX="379.0" layoutY="96.0" prefHeight="272.0" prefWidth="326.0">
+      <TableView fx:id="tblOrderDetail" layoutX="379.0" layoutY="96.0" prefHeight="272.0" prefWidth="326.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Order Id" />
-          <TableColumn prefWidth="75.0" text="Item Code" />
-            <TableColumn prefWidth="75.0" text="Order QTY" />
-            <TableColumn prefWidth="98.4000244140625" text="Discount" />
+          <TableColumn fx:id="colOrderId" prefWidth="75.0" text="Order Id" />
+          <TableColumn fx:id="colItemCode" prefWidth="75.0" text="Item Code" />
+            <TableColumn fx:id="colOrderQty" prefWidth="75.0" text="Order QTY" />
+            <TableColumn fx:id="colDiscount" prefWidth="98.4000244140625" text="Discount" />
         </columns>
       </TableView>
       <Label alignment="CENTER" layoutX="147.0" layoutY="31.0" prefHeight="39.0" prefWidth="514.0" text="OrderDetail Management Form">
@@ -35,36 +35,31 @@
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
       </Label>
-      <JFXTextField focusColor="#42a840" layoutX="137.0" layoutY="105.0" prefHeight="26.0" prefWidth="177.0" />
+      <JFXTextField fx:id="txtOrderId" focusColor="#42a840" layoutX="137.0" layoutY="105.0" prefHeight="26.0" prefWidth="177.0" />
       <Label layoutX="58.0" layoutY="105.0" prefHeight="26.0" prefWidth="79.0" text="Order ID :">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
       </Label>
-      <JFXTextField focusColor="#42a840" layoutX="137.0" layoutY="148.0" prefHeight="26.0" prefWidth="177.0" />
+      <JFXTextField fx:id="txtItemCode" focusColor="#42a840" layoutX="137.0" layoutY="148.0" prefHeight="26.0" prefWidth="177.0" />
       <Label layoutX="58.0" layoutY="205.0" prefHeight="26.0" prefWidth="79.0" text="Order QTY:">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
       </Label>
-      <JFXTextField focusColor="#42a840" layoutX="137.0" layoutY="205.0" prefHeight="26.0" prefWidth="177.0" />
+      <JFXTextField fx:id="txtOrderQty" focusColor="#42a840" layoutX="137.0" layoutY="205.0" prefHeight="26.0" prefWidth="177.0" />
       <Label layoutX="58.0" layoutY="245.0" prefHeight="26.0" prefWidth="72.0" text="Discount :">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
       </Label>
-      <JFXTextField focusColor="#42a840" layoutX="137.0" layoutY="245.0" prefHeight="26.0" prefWidth="177.0" />
-      <JFXButton layoutX="41.0" layoutY="364.0" prefHeight="39.0" prefWidth="70.0" style="-fx-background-color: #9ef01a;" text="Add" textFill="WHITE">
+      <JFXTextField fx:id="txtDiscount" focusColor="#42a840" layoutX="137.0" layoutY="245.0" prefHeight="26.0" prefWidth="177.0" />
+      <JFXButton fx:id="btnUpdate" layoutX="71.0" layoutY="328.0" onAction="#btnUpdateOnAction" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: #9ef01a;" text="Update" textFill="WHITE">
          <font>
-            <Font name="Berlin Sans FB" size="16.0" />
+            <Font name="Berlin Sans FB Demi Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="137.0" layoutY="364.0" prefHeight="39.0" prefWidth="79.0" style="-fx-background-color: #9ef01a;" text="Update" textFill="WHITE">
-         <font>
-            <Font name="Berlin Sans FB" size="16.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="242.0" layoutY="364.0" prefHeight="39.0" prefWidth="79.0" style="-fx-background-color: #9ef01a;" text="Delete" textFill="WHITE">
+      <JFXButton fx:id="btndelete" layoutX="200.0" layoutY="328.0" onAction="#btnDeleteOnAction" prefHeight="39.0" prefWidth="88.0" style="-fx-background-color: #9ef01a;" text="Delete" textFill="WHITE">
          <font>
             <Font name="Berlin Sans FB" size="16.0" />
          </font>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -9,15 +10,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="418.0" prefWidth="749.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ItemManagementFormComtroller">
+<AnchorPane prefHeight="414.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderController.OrderManagementFormController">
    <children>
-      <TableView layoutX="449.0" layoutY="104.0" prefHeight="272.0" prefWidth="228.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="Order Id" />
-          <TableColumn prefWidth="75.0" text="Order Date" />
-            <TableColumn prefWidth="75.0" text="Customer Id" />
-        </columns>
-      </TableView>
       <Label alignment="CENTER" layoutX="145.0" layoutY="32.0" prefHeight="39.0" prefWidth="460.0" text="Order Management Form">
          <font>
             <Font name="Arial Rounded MT Bold" size="33.0" />
@@ -33,18 +27,35 @@
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
       </Label>
-      <JFXTextField focusColor="#42a840" layoutX="150.0" layoutY="115.0" prefHeight="26.0" prefWidth="177.0" />
+      <JFXTextField fx:id="txtOrderId" focusColor="#42a840" layoutX="150.0" layoutY="115.0" prefHeight="26.0" prefWidth="177.0" />
       <Label layoutX="63.0" layoutY="163.0" prefHeight="26.0" prefWidth="82.0" text="Order Date :">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
       </Label>
-      <JFXTextField focusColor="#42a840" layoutX="150.0" layoutY="163.0" prefHeight="26.0" prefWidth="177.0" />
-      <JFXTextField focusColor="#42a840" layoutX="150.0" layoutY="213.0" prefHeight="26.0" prefWidth="177.0" />
+      <JFXTextField fx:id="txtOrderDate" focusColor="#42a840" layoutX="150.0" layoutY="163.0" prefHeight="26.0" prefWidth="177.0" />
+      <JFXTextField fx:id="txtCustomerId" focusColor="#42a840" layoutX="150.0" layoutY="213.0" prefHeight="26.0" prefWidth="177.0" />
       <Label layoutX="59.0" layoutY="213.0" prefHeight="26.0" prefWidth="89.0" text="Customer ID :">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
       </Label>
+      <JFXButton fx:id="btnPlaceOrder" layoutX="127.0" layoutY="279.0" onAction="#btnPlaceOrderFormPerviewOnAction" prefHeight="39.0" prefWidth="122.0" style="-fx-background-color: #9ef01a;" text="Place Order" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btndelete" layoutX="123.0" layoutY="336.0" onAction="#btnDeleteOnAction" prefHeight="39.0" prefWidth="130.0" style="-fx-background-color: #9ef01a;" text="Delete Order" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="16.0" />
+         </font>
+      </JFXButton>
+      <TableView fx:id="tblOrder" layoutX="401.0" layoutY="117.0" prefHeight="218.0" prefWidth="408.0">
+         <columns>
+            <TableColumn fx:id="colOrderId" prefWidth="115.20001220703125" text="Order ID" />
+            <TableColumn fx:id="colOrderDate" prefWidth="140.79995727539062" text="Order Date" />
+            <TableColumn fx:id="colCustomerId" prefWidth="151.199951171875" text="Customer ID" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

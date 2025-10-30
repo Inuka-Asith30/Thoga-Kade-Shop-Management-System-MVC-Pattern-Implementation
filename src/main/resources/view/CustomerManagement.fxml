@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -13,19 +12,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="620.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerManagementFormController">
+<AnchorPane prefHeight="620.0" prefWidth="1348.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.customerController.CustomerManagementFormController">
    <children>
-      <TableView layoutX="398.0" layoutY="107.0" prefHeight="399.0" prefWidth="822.0">
+      <TableView fx:id="tblCustomerDetails" layoutX="398.0" layoutY="107.0" prefHeight="399.0" prefWidth="898.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Customer ID" />
-          <TableColumn prefWidth="75.0" text="Title" />
-            <TableColumn prefWidth="75.0" text="Name" />
-            <TableColumn prefWidth="98.4000244140625" text="Date Of Birth" />
-            <TableColumn prefWidth="98.4000244140625" text="Salary" />
-            <TableColumn prefWidth="98.4000244140625" text="Address" />
-            <TableColumn prefWidth="98.4000244140625" text="City" />
-            <TableColumn prefWidth="98.4000244140625" text="Province" />
-            <TableColumn prefWidth="98.4000244140625" text="PostalCode" />
+          <TableColumn fx:id="colCustomerID" prefWidth="75.0" text="Customer ID" />
+          <TableColumn fx:id="colTitle" prefWidth="75.0" text="Title" />
+            <TableColumn fx:id="colName" prefWidth="75.0" text="Name" />
+            <TableColumn fx:id="colDOB" prefWidth="98.4000244140625" text="Date Of Birth" />
+            <TableColumn fx:id="colSalary" prefWidth="98.4000244140625" text="Salary" />
+            <TableColumn fx:id="colAddress" prefWidth="165.5999755859375" text="Address" />
+            <TableColumn fx:id="colCity" prefWidth="95.20001220703125" text="City" />
+            <TableColumn fx:id="colProvince" prefWidth="107.2000732421875" text="Province" />
+            <TableColumn fx:id="colPostalcode" prefWidth="106.4000244140625" text="PostalCode" />
         </columns>
       </TableView>
       <Label alignment="CENTER" layoutX="384.0" layoutY="33.0" prefHeight="26.0" prefWidth="512.0" text="Customer Management Form">
@@ -38,30 +37,29 @@
             <Image url="@../img/images.png" />
          </image>
       </ImageView>
-      <Label layoutX="39.0" layoutY="85.0" prefHeight="26.0" prefWidth="94.0" text="Customer ID :">
+      <Label layoutX="29.0" layoutY="111.0" prefHeight="26.0" prefWidth="94.0" text="Customer ID :">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtCustomerId" focusColor="#42a840" layoutX="127.0" layoutY="85.0" prefHeight="26.0" prefWidth="177.0" />
-      <Label layoutX="39.0" layoutY="124.0" prefHeight="26.0" prefWidth="94.0" text="Title               :">
+      <JFXTextField fx:id="txtCustomerId" focusColor="#42a840" layoutX="130.0" layoutY="111.0" prefHeight="26.0" prefWidth="186.0" />
+      <Label layoutX="32.0" layoutY="169.0" prefHeight="26.0" prefWidth="94.0" text="Title               :">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
       </Label>
-      <JFXTextArea fx:id="txtTitle" focusColor="#42a840" layoutX="133.0" layoutY="124.0" prefHeight="55.0" prefWidth="178.0" />
-      <Label layoutX="39.0" layoutY="215.0" prefHeight="26.0" prefWidth="88.0" text="Name             :">
+      <Label layoutX="32.0" layoutY="215.0" prefHeight="26.0" prefWidth="88.0" text="Name             :">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtName" focusColor="#42a840" layoutX="133.0" layoutY="215.0" prefHeight="26.0" prefWidth="178.0" />
+      <JFXTextField fx:id="txtName" focusColor="#42a840" layoutX="130.0" layoutY="215.0" prefHeight="26.0" prefWidth="186.0" />
       <Label layoutX="33.0" layoutY="271.0" prefHeight="26.0" prefWidth="94.0" text="Date Of Birth : ">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
       </Label>
-      <DatePicker fx:id="dPDateOfBith" layoutX="127.0" layoutY="272.0" prefHeight="26.0" prefWidth="178.0" />
+      <DatePicker fx:id="dPDateOfBith" layoutX="127.0" layoutY="272.0" prefHeight="26.0" prefWidth="186.0" />
       <Label layoutX="32.0" layoutY="314.0" prefHeight="26.0" prefWidth="94.0" text="Salary             : ">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
@@ -73,39 +71,40 @@
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtAddress" focusColor="#42a840" layoutX="127.0" layoutY="357.0" prefHeight="26.0" prefWidth="186.0" />
+      <JFXTextField fx:id="txtAddress" focusColor="#42a840" layoutX="126.0" layoutY="357.0" prefHeight="26.0" prefWidth="186.0" />
       <Label layoutX="36.0" layoutY="402.0" prefHeight="26.0" prefWidth="94.0" text="City              :     ">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtCity" focusColor="#42a840" layoutX="123.0" layoutY="402.0" prefHeight="26.0" prefWidth="193.0" />
+      <JFXTextField fx:id="txtCity" focusColor="#42a840" layoutX="127.0" layoutY="402.0" prefHeight="26.0" prefWidth="186.0" />
       <Label layoutX="36.0" layoutY="447.0" prefHeight="26.0" prefWidth="88.0" text="Province   :     ">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="cmbProvince" focusColor="#42a840" layoutX="123.0" layoutY="448.0" prefHeight="26.0" prefWidth="194.0" />
-      <Label layoutX="32.0" layoutY="490.0" prefHeight="26.0" prefWidth="94.0" text="Postal Code   : ">
+      <JFXComboBox fx:id="cmbProvince" focusColor="#42a840" layoutX="127.0" layoutY="447.0" prefHeight="26.0" prefWidth="186.0" />
+      <Label layoutX="32.0" layoutY="490.0" prefHeight="26.0" prefWidth="94.0" text="Postal Code  : ">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtPostalCode" focusColor="#42a840" layoutX="129.0" layoutY="490.0" prefHeight="26.0" prefWidth="186.0" />
-      <JFXButton layoutX="88.0" layoutY="552.0" prefHeight="39.0" prefWidth="70.0" style="-fx-background-color: #9ef01a;" text="Add" textFill="WHITE">
+      <JFXTextField fx:id="txtPostalCode" focusColor="#42a840" layoutX="127.0" layoutY="493.0" prefHeight="26.0" prefWidth="178.0" />
+      <JFXButton fx:id="btnAdd" layoutX="88.0" layoutY="552.0" onAction="#btnAddOnAction" prefHeight="39.0" prefWidth="70.0" style="-fx-background-color: #9ef01a;" text="Add" textFill="WHITE">
          <font>
             <Font name="Berlin Sans FB" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="182.0" layoutY="552.0" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: #9ef01a;" text="Update" textFill="WHITE">
+      <JFXButton fx:id="btnUpdate" layoutX="182.0" layoutY="552.0" onAction="#btnUpdateOnAction" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: #9ef01a;" text="Update" textFill="WHITE">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="305.0" layoutY="552.0" prefHeight="39.0" prefWidth="88.0" style="-fx-background-color: #9ef01a;" text="Delete" textFill="WHITE">
+      <JFXButton fx:id="btndelete" layoutX="296.0" layoutY="552.0" onAction="#btnDeleteOnAction" prefHeight="39.0" prefWidth="88.0" style="-fx-background-color: #9ef01a;" text="Delete" textFill="WHITE">
          <font>
             <Font name="Berlin Sans FB" size="16.0" />
          </font>
       </JFXButton>
+      <JFXComboBox fx:id="cmbTitle" focusColor="#42a840" layoutX="130.0" layoutY="169.0" prefHeight="26.0" prefWidth="186.0" />
    </children>
 </AnchorPane>
