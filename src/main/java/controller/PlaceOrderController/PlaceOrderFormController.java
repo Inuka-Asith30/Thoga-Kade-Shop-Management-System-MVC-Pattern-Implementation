@@ -84,9 +84,10 @@ public class PlaceOrderFormController extends Component implements Initializable
 
     PlaceOrderService placeOrderService=new PlaceOrderController();
 
-    ObservableList<TableOrderDetail> tableOrderDetail= FXCollections.observableArrayList();
+    private ObservableList<TableOrderDetail> tableOrderDetail= FXCollections.observableArrayList();
 
     Double newTotal=0.0;
+
 
     @FXML
     void btnAddtoCartOnAction(ActionEvent event) {
@@ -115,7 +116,15 @@ public class PlaceOrderFormController extends Component implements Initializable
         String orderId=txtOrderId.getText();
         LocalDate orderDate=dPOrderDate.getValue();
         String custID=txtCustomerId.getText();
-        boolean isAdded=placeOrderService.placeOrderDetails(new Order(orderId,orderDate,custID));
+
+        String itemCode=txtItemCode.getText();
+        String description=lblDescripstion.getText();
+        Double unitPrice=Double.parseDouble(lblPrice.getText());
+        Integer orderQty=Integer.parseInt(txtQuantity.getText());
+        Integer discount=Integer.parseInt(lblDiscount.getText());
+
+
+        boolean isAdded=placeOrderService.placeOrderDetails(new Order(orderId,orderDate,custID),tableOrderDetail);
 
         if(isAdded){
             JOptionPane.showConfirmDialog(this,"Order was Placed");
@@ -185,7 +194,7 @@ public class PlaceOrderFormController extends Component implements Initializable
         if(lastOrderId!=null){
             lastOrderId=lastOrderId.split("[A-Z]")[1];//D060-->060
             newOrderId=String.format("D%03d",(Integer.parseInt(lastOrderId)+1));
-            System.out.println(newOrderId);
+            //System.out.println(newOrderId);
 
             txtOrderId.setText(newOrderId);
         }
