@@ -129,6 +129,8 @@ public class PlaceOrderFormController extends Component implements Initializable
         if(isAdded){
             JOptionPane.showConfirmDialog(this,"Order was Placed");
             getNewOrderId();
+            tableOrderDetail.clear();
+            tblAddToCart.setItems(tableOrderDetail);
         }
         else{
             JOptionPane.showConfirmDialog(this,"Order was not Placed");
