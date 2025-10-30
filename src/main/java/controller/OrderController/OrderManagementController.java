@@ -41,8 +41,23 @@ public class OrderManagementController implements OrderManagementService {
     }
 
     @Override
-    public int deleteOrder(String orderId) {
-        return 0;
+    public boolean deleteOrder(String orderId) {
+
+        try {
+            Connection connection=DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from orders  where OrderId=?");
+            preparedStatement.setObject(1,orderId);
+            int isDeleted=preparedStatement.executeUpdate();
+
+            if(isDeleted==1){
+               return true;
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return false;
     }
 
     @Override

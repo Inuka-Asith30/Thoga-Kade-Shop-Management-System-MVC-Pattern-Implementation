@@ -6,6 +6,6 @@ import model.Order;
 public interface OrderManagementService {
     boolean addOrder(Order order);
     boolean updateOrder(Order order);
-    int deleteOrder(String orderId);
+    boolean deleteOrder(String orderId);
     ObservableList<Order> getAllOrders();
 }

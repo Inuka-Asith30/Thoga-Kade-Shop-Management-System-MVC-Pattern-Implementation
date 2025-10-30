@@ -71,6 +71,7 @@ public class PlaceOrderController implements PlaceOrderService{
             ResultSet resultSet=preparedStatement.executeQuery();
 
             String orderId=null;
+
             while(resultSet.next()){
                 orderId=resultSet.getString("OrderID");
             }
@@ -87,18 +88,21 @@ public class PlaceOrderController implements PlaceOrderService{
     public boolean placeOrderDetails(Order order, ObservableList<TableOrderDetail> tableOrderDetails) {
 
         boolean isAddedOrderTable=orderManagementService.addOrder(order);
-        boolean isAddedOrderdetailsTable=false;
+        boolean isAddedOrderdetailsTable=true;
+        OrderDetails setOrderTable=null;
+
         for(TableOrderDetail tableOrderDetail:tableOrderDetails){
 
-            isAddedOrderdetailsTable=addOrderDetail(
-                    new OrderDetails(order.getOrderId(),
-                            tableOrderDetail.getItemCode(),
-                            tableOrderDetail.getOrderQty(),
-                            tableOrderDetail.getDiscount()
-                    )
+            setOrderTable=new OrderDetails(order.getOrderId(),
+                    tableOrderDetail.getItemCode(),
+                    tableOrderDetail.getOrderQty(),
+                    tableOrderDetail.getDiscount()
             );
 
-            if(isAddedOrderdetailsTable!=true){
+
+
+            if(addOrderDetail(setOrderTable)!=true || updateItemTable(setOrderTable)!=true){
+                isAddedOrderdetailsTable=false;
                 break;
             }
 
@@ -106,7 +110,7 @@ public class PlaceOrderController implements PlaceOrderService{
 
 
 
-        return isAddedOrderTable & isAddedOrderdetailsTable;
+        return isAddedOrderdetailsTable && isAddedOrderTable;
     }
 
     private boolean addOrderDetail(OrderDetails orderDetails){
@@ -128,6 +132,37 @@ public class PlaceOrderController implements PlaceOrderService{
             throw new RuntimeException(e);
         }
     }
+
+    public boolean updateItemTable(OrderDetails orderDetails){
+        try {
+            Connection connection=DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement=connection.prepareStatement("select QtyOnHand from item where ItemCode=?");
+            preparedStatement.setObject(1,orderDetails.getItemCode());
+            ResultSet resultSet=preparedStatement.executeQuery();
+
+            Double qtyOnHand =0.0;
+
+            while (resultSet.next()){
+                qtyOnHand =resultSet.getDouble("qtyOnHand");
+            }
+            qtyOnHand= qtyOnHand-orderDetails.getOrderQty();
+
+            PreparedStatement preparedStatement2=connection.prepareStatement("UPDATE item SET QtyOnHand=? WHERE ItemCode=?");
+            preparedStatement2.setObject(1,qtyOnHand);
+            preparedStatement2.setObject(2,orderDetails.getItemCode());
+            int isUpdated=preparedStatement2.executeUpdate();
+
+            if(isUpdated==1){
+                return true;
+            }
+            return false;
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 
 }

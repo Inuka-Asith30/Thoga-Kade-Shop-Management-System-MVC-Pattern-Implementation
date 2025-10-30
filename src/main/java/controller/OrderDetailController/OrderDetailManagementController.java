@@ -1,6 +1,8 @@
 package controller.OrderDetailController;
 
 import controller.DB.DBConnection;
+import controller.PlaceOrderController.PlaceOrderController;
+import controller.PlaceOrderController.PlaceOrderService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Order;
@@ -46,8 +48,10 @@ public class OrderDetailManagementController implements OrderDetailManagementSer
             preparedStatement.setObject(4,orderDetails.getOrderId());
 
             int isUpdated=preparedStatement.executeUpdate();
+            PlaceOrderService placeOrderService=new PlaceOrderController();
+            boolean isUpdatedItemTable=placeOrderService.updateItemTable(orderDetails);
 
-            if(isUpdated==1){
+            if(isUpdated==1 && isUpdatedItemTable){
                 return true;
             }
             return false;

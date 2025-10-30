@@ -9,17 +9,21 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Order;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class OrderManagementFormController implements Initializable {
+public class OrderManagementFormController extends Component implements Initializable {
 
     @FXML
     private JFXButton btnAdd;
@@ -63,13 +67,20 @@ public class OrderManagementFormController implements Initializable {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        String orderId=txtOrderId.getText();
 
+        boolean isDeleted=orderManagementService.deleteOrder(orderId);
+
+        if(isDeleted){
+            JOptionPane.showConfirmDialog(this,"Order was Deleted");
+            loadOrders();
+        }
+        else{
+            JOptionPane.showConfirmDialog(this,"Order was not Deleted");
+        }
     }
 
-    @FXML
-    void btnUpdateOnAction(ActionEvent event) {
 
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -79,6 +90,13 @@ public class OrderManagementFormController implements Initializable {
         colOrderId.setCellValueFactory(new PropertyValueFactory<>("orderId"));
 
         loadOrders();
+
+        tblOrder.getSelectionModel().selectedItemProperty().addListener(((observableValue, oldValue, newValue) ->{
+            if(newValue!=null){
+                setSelectedValue(newValue);
+            }
+        }));
+
     }
 
     public void loadOrders(){
@@ -93,4 +111,11 @@ public class OrderManagementFormController implements Initializable {
         placeOrderFormStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/PlaceOrder.fxml"))));
         placeOrderFormStage.show();
     }
+
+    public void setSelectedValue(Order order){
+        txtOrderId.setText(order.getOrderId());
+        txtOrderDate.setText(order.getOrderDate().toString());
+        txtCustomerId.setText(order.getCustomerId());
+    }
+
 }
