@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -104,6 +105,18 @@
          </font>
       </Label>
       <Label fx:id="lblDiscount" alignment="CENTER" layoutX="148.0" layoutY="280.0" prefHeight="25.0" prefWidth="145.0" text="discount">
+         <font>
+            <Font name="Dubai Medium" size="13.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="dPOrderDate" layoutX="114.0" layoutY="450.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="34.0" layoutY="450.0" prefHeight="17.0" prefWidth="78.0" text="OrderDate : ">
+         <font>
+            <Font name="Dubai Medium" size="13.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtOrderId" layoutX="732.0" layoutY="38.0" prefHeight="26.0" prefWidth="98.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="653.0" layoutY="39.0" prefHeight="17.0" prefWidth="78.0" text="Order Id:">
          <font>
             <Font name="Dubai Medium" size="13.0" />
          </font>

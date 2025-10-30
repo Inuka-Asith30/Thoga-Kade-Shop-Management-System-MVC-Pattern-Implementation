@@ -8,16 +8,19 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Item;
+import model.Order;
 import model.TableOrderDetail;
 
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class PlaceOrderFormController extends Component implements Initializable{
@@ -62,6 +65,9 @@ public class PlaceOrderFormController extends Component implements Initializable
     private Label lblPrice;
 
     @FXML
+    private DatePicker dPOrderDate;
+
+    @FXML
     private TableView<TableOrderDetail> tblAddToCart;
 
     @FXML
@@ -72,6 +78,9 @@ public class PlaceOrderFormController extends Component implements Initializable
 
     @FXML
     private JFXTextField txtQuantity;
+
+    @FXML
+    private JFXTextField txtOrderId;
 
     PlaceOrderService placeOrderService=new PlaceOrderController();
 
@@ -103,6 +112,19 @@ public class PlaceOrderFormController extends Component implements Initializable
 
     @FXML
     void btnPlaceOrderOnAction(ActionEvent event) {
+        String orderId=txtOrderId.getText();
+        LocalDate orderDate=dPOrderDate.getValue();
+        String custID=txtCustomerId.getText();
+        boolean isAdded=placeOrderService.placeOrderDetails(new Order(orderId,orderDate,custID));
+
+        if(isAdded){
+            JOptionPane.showConfirmDialog(this,"Order was Placed");
+            getNewOrderId();
+        }
+        else{
+            JOptionPane.showConfirmDialog(this,"Order was not Placed");
+        }
+
 
     }
 
@@ -136,7 +158,6 @@ public class PlaceOrderFormController extends Component implements Initializable
     @FXML
     void txtQuantityOnAction(ActionEvent event) {
 
-
     }
 
     @Override
@@ -148,6 +169,29 @@ public class PlaceOrderFormController extends Component implements Initializable
         colDiscount.setCellValueFactory(new PropertyValueFactory<>("discount"));
         colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
 
+        LocalDate currentDate = LocalDate.now();
+        dPOrderDate.setValue(currentDate);
+
+        getNewOrderId();
+
+
+
+    }
+
+    public void getNewOrderId(){
+        String lastOrderId=placeOrderService.getOrderId();
+        String newOrderId=null;
+
+        if(lastOrderId!=null){
+            lastOrderId=lastOrderId.split("[A-Z]")[1];//D060-->060
+            newOrderId=String.format("D%03d",(Integer.parseInt(lastOrderId)+1));
+            System.out.println(newOrderId);
+
+            txtOrderId.setText(newOrderId);
+        }
+        else{
+            txtOrderId.setText("D001");
+        }
     }
 
 }

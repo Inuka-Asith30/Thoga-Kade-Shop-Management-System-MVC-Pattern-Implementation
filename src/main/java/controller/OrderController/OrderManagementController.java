@@ -14,7 +14,25 @@ import java.sql.SQLException;
 public class OrderManagementController implements OrderManagementService {
     @Override
     public boolean addOrder(Order order) {
-        return false;
+
+        try {
+            Connection connection=DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement=connection.prepareStatement("INSERT INTO orders(OrderID, OrderDate, CustID) VALUES(?,?,?)");
+            preparedStatement.setObject(1,order.getOrderId());
+            preparedStatement.setObject(2,order.getOrderDate());
+            preparedStatement.setObject(3,order.getCustomerId());
+
+            int isAdded=preparedStatement.executeUpdate();
+
+            if(isAdded==1){
+                return true;
+            }
+            return false;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override

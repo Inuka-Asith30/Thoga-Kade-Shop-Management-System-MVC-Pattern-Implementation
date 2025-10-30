@@ -1,7 +1,10 @@
 package controller.PlaceOrderController;
 
 import controller.DB.DBConnection;
+import controller.OrderController.OrderManagementController;
+import controller.OrderController.OrderManagementService;
 import model.Item;
+import model.Order;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,6 +12,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PlaceOrderController implements PlaceOrderService{
+
+    OrderManagementService orderManagementService=new OrderManagementController();
+
     @Override
     public Item priceInitialize(String itemCode) {
         try {
@@ -52,4 +58,35 @@ public class PlaceOrderController implements PlaceOrderService{
         }
 
     }
+
+    @Override
+    public String getOrderId() {
+
+        try {
+            Connection connection=DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement=connection.prepareStatement("SELECT OrderID FROM orders ORDER BY OrderID DESC LIMIT 1");
+            ResultSet resultSet=preparedStatement.executeQuery();
+
+            String orderId=null;
+            while(resultSet.next()){
+                orderId=resultSet.getString("OrderID");
+            }
+
+            return orderId;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @Override
+    public boolean placeOrderDetails(Order order) {
+
+        boolean isAdded=orderManagementService.addOrder(order);
+
+        return isAdded;
+    }
+
+
 }
